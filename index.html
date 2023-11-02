@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <!--  Etiquetas meta  -->
+  <meta charset="UTF-8">
+
+  <!--  SEO meta  -->
+  <meta property="og:type" content="website">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Win!">
+  <meta http-equiv="Cache-control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+
+  <!--  Ajustes meta  -->
+  <meta property="og:locale" content="es-ES">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!--  Hojas de estilo  -->
+  <link rel="stylesheet" href="./style.css">
+
+  <!--  Scripts  -->
+  <script src="./script.js"></script>
+
+  <!--  Título  -->
+  <title>gacarbla • Win!</title>
+
+</head>
+
+<body id="body">
+
+  <script>
+    window.onload = function () {
+
+      const data = {
+        eliminar(ruta) {
+          localStorage.removeItem(`${ruta}`);
+          return localStorage
+        },
+        establecer(ruta, valor) {
+          localStorage.setItem(`${ruta}`, valor);
+          return
+        },
+        existe(ruta) {
+          if (localStorage[`${ruta}`]) return true;
+          return false;
+        },
+        obtener(ruta) {
+          return localStorage.getItem(`${ruta}`);
+        },
+        reset() {
+          localStorage.clear();
+        },
+        table() {
+          return console.table(localStorage)
+        }
+      }
+
+      data.establecer("erased", "false")
+
+      setInterval(function () {
+        if (((window.outerHeight - window.innerHeight > 250) || (window.outerWidth - window.innerWidth) > 75) || data.existe("tryed")) {
+          if (!data.existe("tryed") || !(data.obtener("erased") == "true"))
+          document.querySelector("body").innerHTML = "<h1>Por curiosito te has quedado bien payasito :D</h1>"
+          data.establecer("tryed", "true")
+          data.establecer("erased", "true")
+        }
+      }, 100)
+    }
+
+    function check() {
+      return new Promise(async (resolve, reject) => {
+        document.querySelector("body").classList.add("loading")
+        await sleep(3000)
+        document.querySelector("body").classList.remove("loading")
+        let input = document.getElementById("pssw").value || "a"
+        let solution = encrypt('˽̴̹̹̥ȗǠǠ̂˟˟Ǜˤ̠Ǡ˳Ǫ̥ʣ͒ʭɻ', input, 1, "text", "text", "decrypt")
+        if (solution.charAt(8) == "i") {
+          window.location.href = solution
+        } else {
+          alert("Sigue intentándolo")
+        }
+      })
+
+    }
+  </script>
+
+  <h1>Win!</h1>
+  <p>Bienvenid@ a un juego simple.<br>Introduce una clave, presiona el botón de comprobar, y te indicará si has ganado o no un mes de Discord Nitro.</p>
+  <p><b>ADVERTENCIA:</b> <small>No utilices el inspector de código. Serás vetad@ de acceso a la página.</small></p>
+  <input type="text" id="pssw"><button onclick="check()">Comprobar</button>
+  <p id="test"></p>
+</body>
+
+</html>

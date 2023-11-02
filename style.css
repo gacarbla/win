@@ -1,0 +1,31 @@
+@import url('https://fonts.cdnfonts.com/css/whitney-2');
+
+* {
+    font-family: whitney, Arial;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+    -ms-user-select: none;
+}
+
+body {
+    height: calc(100vh - 250px);
+}
+
+body * {
+    animation: fadein 3s ease-out;
+}
+
+@keyframes fadein {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.loading, .loading * {
+    cursor: wait;
+}
